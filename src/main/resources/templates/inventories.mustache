@@ -1,0 +1,34 @@
+<html>
+<body>
+<div>
+    <a href="/profile"><<==</a>
+</div>
+<div>
+    Your money:
+    {{#money}}
+        {{money}}
+    {{/money}}
+</div>
+<div>
+    <form method="post" action="/inventories/buyButton">
+        <span>Choose inventory</span>
+        <div>
+            <label>
+                Enter inventory id: <input type="number" name="invnetoryid" required = "required">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+                <button type="submit">Buy</button>
+            </label>
+        </div>
+    </form>
+</div>
+<div>Inventory list</div>
+{{#inventories}}
+    <div>
+        <d>{{id}}</d>
+        <span>{{name}}</span>
+        <strong>{{authorName}}</strong>
+        <span>{{price}}</span>
+    </div>
+{{/inventories}}
+</body>
+</html>

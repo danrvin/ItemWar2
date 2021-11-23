@@ -1,0 +1,38 @@
+<html>
+<body>
+<div>
+    Your money:
+    {{#money}}
+        {{money}}
+    {{/money}}
+</div>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <form action="/profile/choose" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        <input type="submit" value="Choose inventory"/>
+    </form>
+    <form action="/profile/delete" method="post">
+        <input type="hidden" name="function" value="delete">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+        <input type="submit" value="lay out inventory"/>
+    </form>
+</div>
+<div>
+    {{#message}}
+        {{message}}
+    {{/message}}
+</div>
+<div>
+    Your inventory
+    {{#inventory}}
+        <span>{{name}}</span>
+        <span>{{author.username}}</span>
+    {{/inventory}}
+</div>
+<a href="items">lets check your items</a>
+</body>
+</html>

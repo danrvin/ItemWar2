@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="javascript" type="text/javascript" src="test.js"></script>
+    <script language="javascript" type="text/javascript" src="https://github.com/processing/p5.js/releases/download/v1.4.0/p5.min.js"></script>
+</head>
+<body>
+<div>
+    Hello world
+</div>
+
+
+<input type="text" id="txtUserName" required = "required"/>
+<input type="text" id="txtPassword" required = "required"/>
+<div><input type="button" id = "cmdCreate"  value="buy"/></div>
+
+
+<script>
+    let dialogName = "create";
+    function reView(){
+        // txtPassword.setVisible(false);
+        //скрываешь все
+        txtPassword.style.display = "none"
+
+
+        //показываешь тока нужные
+        if (dialogName==="create")   {
+            txtPassword.style.display = "block"
+            txtUserName.style.display = "block"
+            cmdCreate.style.display = "block"
+            }
+
+        // document.querySelector('html').innerHTML = html
+        //if dialogName=="create")
+        }
+    cmdCreate.addEventListener("click",
+                            function(){
+                            sendPostServer(txtUserName.value,txtPassword.value);
+
+                            dialogName = "work";
+                            reView();
+
+                             }//function
+                             );
+</script>
+</body>
+</html>
