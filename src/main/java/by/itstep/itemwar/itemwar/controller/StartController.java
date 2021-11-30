@@ -10,13 +10,13 @@ public class StartController {
     @GetMapping("/")
     public String start(String name,Model model) {
         //model.addAttribute("name",name);
-        return "adminUser.html";
+        return "index.html";
     }
 
     @GetMapping("test.js")
     public String request(String name,Model model) {
         //model.addAttribute("name",name);
-        return "test.js";
+        return "adminUser.js";
     }
 
 

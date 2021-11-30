@@ -5,6 +5,7 @@ import by.itstep.itemwar.itemwar.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
+import java.util.List;
 
 @RestController
 public class UserRestController {
@@ -19,18 +20,28 @@ public class UserRestController {
     public Iterable<User> list() {
         return userService.findAll();
     }
-//
-//    @GetMapping("{id}")
-//    public User getOne(@PathVariable Long id) {
-//        return userService.getOne(id);
-//    }
-//
-    @PostMapping("/user")
-    //public User create(@RequestBody User user) {
-    public Long create(@RequestBody String str1) {
-        System.out.println(str1);
 
-        /*
+
+    @PostMapping("/createUser")
+    public Long create(@RequestBody User user) {
+        userService.save(user);
+        return user.getId();
+    }
+
+    @GetMapping("/getUsers")
+    public String getUsers() {
+        String names = "";
+        List<User> users = userService.users();
+        for (int i = 0; i < users.size(); i++) {
+            names += users.get(i).getUsername() + "\n";
+        }
+        return names;
+    }
+
+}
+
+ /*
+ String PARSING
         String nameStr =str1.split(",")[0];
         String passStr =str1.split(",")[1];
 
@@ -45,32 +56,21 @@ public class UserRestController {
         index = passStr.indexOf("\"");
         indexLast =passStr.indexOf("\"",index + 1);
         passStr = passStr.substring(index+1,indexLast);
-        */
-        String nameStr =str1.split("#")[0];
-        String passStr =str1.split("#")[1];
+
+       String nameStr = str1.split("#")[0];
+       String passStr = str1.split("#")[1];
+
+
+       System.out.println("*" + nameStr + "*" + passStr + "*");
+
+       User user = new User();
+       user.setUsername(nameStr);
+       user.setPassword(passStr);
+       user = userService.save(user);
+
+
+       int userId = Integer.parseInt(str1.substring(index,indexLast));
 
 
 
-
-
-        System.out.println("*"+nameStr+"*"+passStr+"*");
-
-        User user = new User();
-        user.setUsername(nameStr);
-        user.setPassword(passStr);
-        user = userService.save(user);
-
-
-//        int userId = Integer.parseInt(str1.substring(index,indexLast));
-        
-
-        return user.getId();
-    }
-
-    @GetMapping("/index.html")
-    public File getStart() {
-        File file = new File("templates/adminUser.html");
-        return file;
-    }
-
-}
+  */

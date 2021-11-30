@@ -11,5 +11,7 @@ public interface ItemService {
 
     Item findItemById(Long id);
 
+    void save(Item item);
+
     void createItemsFromInventory(Inventory inventory);
 }
