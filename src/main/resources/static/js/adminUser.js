@@ -1,8 +1,3 @@
-class User{
-    username;
-    password;
-    }
-
 function sendPostServer() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", arguments[0], false);

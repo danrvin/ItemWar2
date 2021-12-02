@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script language="javascript" type="text/javascript" src="../adminUser.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/adminUser.js"></script>
+    <script language="javascript" type="text/javascript" src="../editor/userEditor.js"></script>
     <script language="javascript" type="text/javascript"
             src="https://github.com/processing/p5.js/releases/download/v1.4.0/p5.min.js"></script>
 </head>
 <body>
+
+<h6>Create user<br></h6>
+
 <input type="text" id="txtUserName" required="required"/>
 <input type="text" id="txtPassword" required="required"/>
 <div><input type="button" id="cmdCreate" value="create"/></div>
+
+<h6>Show all users<br></h6>
+
 <div><input type="button" id="cmdShow" value="show all users"/></div>
-
-
 <div id="userList"></div>
-
 <script>
     let dialogName = "create";
 
@@ -45,14 +49,6 @@
         userList.innerHTML = result
         alert(result)
     })
-
-
-    function jsonUserCreate() {
-        let user1 = new User();
-        user1.password = arguments[1]
-        user1.username = arguments[0]
-        return JSON.stringify(user1);
-    }
 </script>
 </body>
 </html>

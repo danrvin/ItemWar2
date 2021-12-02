@@ -2,9 +2,10 @@ package by.itstep.itemwar.itemwar.controller.restController;
 
 import by.itstep.itemwar.itemwar.dao.model.User;
 import by.itstep.itemwar.itemwar.service.UserService;
-import org.springframework.web.bind.annotation.*;
-
-import java.io.File;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
@@ -30,12 +31,12 @@ public class UserRestController {
 
     @GetMapping("/getUsers")
     public String getUsers() {
-        String names = "";
+        StringBuilder names = new StringBuilder();
         List<User> users = userService.users();
         for (int i = 0; i < users.size(); i++) {
-            names += users.get(i).getUsername() + "\n";
+            names.append(users.get(i).getUsername()).append("\n");
         }
-        return names;
+        return names.toString();
     }
 
 }
