@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 
 public class StartController {
-    @GetMapping("/")
+    @GetMapping("/user.html")
     public String start(String name,Model model) {
         //model.addAttribute("name",name);
-        return "adminUser.html";
+        return "user.html";
     }
 
     @GetMapping("test.js")
     public String request(String name,Model model) {
         //model.addAttribute("name",name);
-        return "test.js";
+        return "adminUser.js";
     }
 
 

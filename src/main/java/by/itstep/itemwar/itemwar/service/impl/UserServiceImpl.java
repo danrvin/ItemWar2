@@ -13,6 +13,7 @@ import by.itstep.itemwar.itemwar.service.exceptions.NotEnoughMoneyException;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -96,5 +97,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getOne(Long id) {
         return userRepo.findUserById(id);
+    }
+
+    @Override
+    public List<User> users() {
+        return userRepo.findAll();
     }
 }

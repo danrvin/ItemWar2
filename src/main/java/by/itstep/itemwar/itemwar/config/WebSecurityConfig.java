@@ -21,7 +21,7 @@
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
 //                .authorizeRequests()
-//                    .antMatchers("/","/registration","adminUser.html","test.js","/user").permitAll()
+//                    .antMatchers("/","/registration","user.html","adminUser.js","/user").permitAll()
 //                    .anyRequest().authenticated()
 //                .and()
 //                    .formLogin()

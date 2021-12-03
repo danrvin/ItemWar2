@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="javascript" type="text/javascript" src="../js/adminUser.js"></script>
+    <script language="javascript" type="text/javascript" src="../editor/userEditor.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="https://github.com/processing/p5.js/releases/download/v1.4.0/p5.min.js"></script>
+</head>
+<body>
+
+<h6>Create user<br></h6>
+
+<input type="text" id="txtUserName" required="required"/>
+<input type="text" id="txtPassword" required="required"/>
+<div><input type="button" id="cmdCreate" value="create"/></div>
+
+<h6>Show all users<br></h6>
+
+<div><input type="button" id="cmdShow" value="show all users"/></div>
+<div id="userList"></div>
+<script>
+    let dialogName = "create";
+
+    function reView() {
+        //скрываешь все
+        txtUserName.style.display = "none"
+        txtPassword.style.display = "none"
+
+
+        //показываешь тока нужные
+        if (dialogName === "create") {
+            txtPassword.style.display = "block"
+            txtUserName.style.display = "block"
+        }
+
+        // document.querySelector('html').innerHTML = html
+        //if dialogName=="create")
+    }
+
+    cmdCreate.addEventListener("click", function () {
+        sendPostServer("/createUser", jsonUserCreate(txtUserName.value, txtPassword.value));
+    })//function
+
+    cmdShow.addEventListener("click", function () {
+        let result = getAllUser()
+        userList.innerHTML =""
+        userList.innerHTML = result
+        alert(result)
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script language="javascript" type="text/javascript" src="../js/registration.js"></script>
+    <script language="javascript" type="text/javascript" src="../editor/userEditor.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>Enter your password and username</div>
+<input type="text" id="txtUserName" required="required"/>
+<input type="text" id="txtPassword" required="required"/>
+<div><input type="button" id="cmdRegistration" value="registration"/></div>
+<script>
+    cmdRegistration.addEventListener("click", function () {
+        addUser("/restRegistration", jsonUserCreate(txtUserName.value, txtPassword.value));
+    })
+</script>
+</body>
+</html>

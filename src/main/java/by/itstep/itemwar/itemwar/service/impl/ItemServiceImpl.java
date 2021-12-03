@@ -41,6 +41,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public void save(Item item) {
+        itemRepo.save(item);
+    }
+
+    @Override
     public void createItemsFromInventory(Inventory inventory) {
         for (int i = 0; i < 5; i++) {
             int random = (int) (Math.random() * 5) + 1;

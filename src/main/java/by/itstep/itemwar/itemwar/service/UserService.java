@@ -2,6 +2,7 @@ package by.itstep.itemwar.itemwar.service;
 
 import by.itstep.itemwar.itemwar.dao.model.User;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
@@ -25,4 +26,6 @@ public interface UserService {
     Iterable<User> findAll();
 
     User getOne(Long id);
+
+    List<User> users();
 }

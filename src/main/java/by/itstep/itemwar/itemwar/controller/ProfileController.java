@@ -24,7 +24,7 @@ public class ProfileController {
     }
 
     @GetMapping("/profile")
-    public String profile(Map<String, Object> model, Principal principal) {
+    public String profile(Principal principal, Map<String, Object> model) {
         User user = userService.findByUsername(principal.getName());
         Inventory inventory = inventoryService.findByAuthor(user);
         Long money = user.getMoney();
