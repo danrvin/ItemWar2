@@ -30,10 +30,10 @@ public class UserServiceImpl implements UserService {
         this.inventoryRepo = inventoryRepo;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return userRepo.findByUsername(username);
-//    }
+    @Override
+    public User loadUserByUsername(String username){
+        return userRepo.findByUsername(username);
+    }
 
     @Override
     public User findByUsername(String name) {

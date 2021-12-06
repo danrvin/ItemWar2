@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface UserService {
 
+    User loadUserByUsername(String username);
+
     User findByUsername(String name);
 
     User save(User user);
