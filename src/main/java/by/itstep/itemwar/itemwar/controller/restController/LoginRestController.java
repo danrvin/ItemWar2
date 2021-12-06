@@ -16,8 +16,14 @@ public class LoginRestController {
         this.userService = userService;
     }
 
+    @GetMapping("/loginUser")
+    public String show() {
+        return "login.html";
+    }
+
     @PostMapping("/loginUser")
     public String loginUser(@RequestBody User user) {
+        System.out.println(user.getUsername());
         User user1 = userService.findByUsername(user.getUsername());
         System.out.println(user1.getUsername());
         if (user1.getUsername() != null) {

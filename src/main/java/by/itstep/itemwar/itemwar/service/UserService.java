@@ -1,11 +1,14 @@
 package by.itstep.itemwar.itemwar.service;
 
 import by.itstep.itemwar.itemwar.dao.model.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
+
+    User loadUserByUsername(String username) throws UsernameNotFoundException;
 
     User findByUsername(String name);
 

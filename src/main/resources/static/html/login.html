@@ -18,8 +18,7 @@
 <script>
     cmdLogin.addEventListener("click", function () {
 
-        loginUser(jsonUserCreate(txtUserName.value,txtPassword.value))
-
+        loginUser("/loginUser",jsonUserCreate(txtUserName.value,txtPassword.value))
     })
 </script>
 

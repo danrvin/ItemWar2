@@ -1,9 +1,8 @@
 package by.itstep.itemwar.itemwar.controller;
-//
-//import by.itstep.itemwar.itemwar.dao.model.enums.Role;
+
 import by.itstep.itemwar.itemwar.dao.model.User;
+import by.itstep.itemwar.itemwar.dao.model.enums.Role;
 import by.itstep.itemwar.itemwar.service.InventoryService;
-import by.itstep.itemwar.itemwar.service.ItemService;
 import by.itstep.itemwar.itemwar.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +38,7 @@ public class RegistrationController {
         }
         userService.setActive(user);
         userService.setStartMoney(user);
-//        user.setRoles(Collections.singleton(Role.USER));
+        user.setRoles(Collections.singleton(Role.USER));
         inventoryService.createInventories();
         userService.save(user);
         return "redirect:/login";

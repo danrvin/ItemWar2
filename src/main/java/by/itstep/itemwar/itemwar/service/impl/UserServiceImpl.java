@@ -8,9 +8,9 @@ import by.itstep.itemwar.itemwar.dao.repo.ItemRepo;
 import by.itstep.itemwar.itemwar.dao.repo.UserRepo;
 import by.itstep.itemwar.itemwar.service.UserService;
 import by.itstep.itemwar.itemwar.service.exceptions.NotEnoughMoneyException;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,10 +30,10 @@ public class UserServiceImpl implements UserService {
         this.inventoryRepo = inventoryRepo;
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return userRepo.findByUsername(username);
-//    }
+    @Override
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepo.findByUsername(username);
+    }
 
     @Override
     public User findByUsername(String name) {
