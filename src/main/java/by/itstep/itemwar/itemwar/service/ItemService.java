@@ -2,11 +2,11 @@ package by.itstep.itemwar.itemwar.service;
 
 import by.itstep.itemwar.itemwar.dao.model.Inventory;
 import by.itstep.itemwar.itemwar.dao.model.Item;
+import by.itstep.itemwar.itemwar.dao.model.User;
 
 public interface ItemService {
     Iterable<Item> findAllByInventory(Inventory inventory);
     void deleteItem(Item item);
-
 
 
     Item findItemById(Long id);

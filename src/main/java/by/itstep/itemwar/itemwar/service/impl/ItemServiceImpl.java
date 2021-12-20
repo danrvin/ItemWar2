@@ -2,6 +2,7 @@ package by.itstep.itemwar.itemwar.service.impl;
 
 import by.itstep.itemwar.itemwar.dao.model.Inventory;
 import by.itstep.itemwar.itemwar.dao.model.Item;
+import by.itstep.itemwar.itemwar.dao.model.User;
 import by.itstep.itemwar.itemwar.dao.repo.InventoryRepo;
 import by.itstep.itemwar.itemwar.dao.repo.ItemRepo;
 import by.itstep.itemwar.itemwar.dao.repo.UserRepo;
@@ -29,6 +30,11 @@ public class ItemServiceImpl implements ItemService {
 
         itemRepo.delete(item);
     }
+//
+//    @Override
+//    public Iterable<Item> findItemsOfUser(User user) {
+//        return itemRepo.findItemsByUser(user);
+//    }
 
     @Override
     public Item findItemById(Long id) {

@@ -34,7 +34,6 @@ public class InventoryController {
         return "inventories";
     }
 
-
     @PostMapping("/inventories/buyButton")
     public String buyButton(
             @RequestParam Long invnetoryid,
