@@ -45,20 +45,20 @@ public class UserServiceImpl implements UserService {
         return userRepo.save(user);
     }
 
-    @Override
-    public void setInventoryFalse(User user) {
-        user.setInventory(false);
-    }
+//    @Override
+//    public void setInventoryFalse(User user) {
+//        user.setInventory(false);
+//    }
+//
+//    @Override
+//    public void setInventoryTrue(User user) {
+//        user.setInventory(true);
+//    }
 
-    @Override
-    public void setInventoryTrue(User user) {
-        user.setInventory(true);
-    }
-
-    @Override
-    public void setActive(User user) {
-        user.setActive(true);
-    }
+//    @Override
+//    public void setActive(User user) {
+//        user.setActive(true);
+//    }
 
     @Override
     public void setStartMoney(User user) {

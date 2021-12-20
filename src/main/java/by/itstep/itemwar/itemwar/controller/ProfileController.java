@@ -40,7 +40,7 @@ public class ProfileController {
         Inventory inventory = inventoryService.findByAuthor(user);
         inventoryService.deleteAuthor(inventory);
         inventoryService.deleteIfNull(inventory);
-        userService.setInventoryFalse(user);
+//        userService.setInventoryFalse(user);
         userService.save(user);
         inventoryService.save(inventory);
         return "profile";
@@ -49,10 +49,10 @@ public class ProfileController {
     @PostMapping("/profile/choose")
     public String choose(Principal principal, Map<String, Object> model) {
         User user = userService.findByUsername(principal.getName());
-        if (user.isInventory()) {
-            model.put("message", "Inventory is already in use!!");
-            return "profile";
-        }
+//        if (user.isInventory()) {
+//            model.put("message", "Inventory is already in use!!");
+//            return "profile";
+//        }
         return "redirect:/inventories";
     }
 }

@@ -4,6 +4,7 @@ package by.itstep.itemwar.itemwar.dao.model;
 //import org.springframework.security.core.GrantedAuthority;
 
 import by.itstep.itemwar.itemwar.dao.model.enums.Role;
+import by.itstep.itemwar.itemwar.dao.model.enums.Status;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -31,33 +32,24 @@ public class User {
     @Column(name = "money", columnDefinition = "double default 0")
     private Long money;
 
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "role")
     private Role role;
 
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private Status status;
 
-    @Column(name = "inventory")
-    private boolean inventory;
-
-    @Column(name = "active")
-    private boolean active;
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public boolean isInventory() {
-        return inventory;
-    }
-
-    public void setInventory(boolean inventory) {
-        this.inventory = inventory;
-    }
+//    @Column(name = "inventory")
+//    private boolean inventory;
+//
+//    public boolean isInventory() {
+//        return inventory;
+//    }
+//
+//    public void setInventory(boolean inventory) {
+//        this.inventory = inventory;
+//    }
 
     public Long getId() {
         return id;
@@ -107,15 +99,15 @@ public class User {
         this.role = role;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
 //    private Long id;
 //

@@ -43,7 +43,7 @@ public class InventoryController {
         User user = userService.findByUsername(principal.getName());
         Inventory inventory = inventoryService.findInventoryById(invnetoryid);
         inventoryService.setAuthor(inventory, user);
-        userService.setInventoryTrue(user);
+//        userService.setInventoryTrue(user);
         userService.userRemoveMoneyFromInventory(user, invnetoryid);
         userService.save(user);
         inventoryService.save(inventory);

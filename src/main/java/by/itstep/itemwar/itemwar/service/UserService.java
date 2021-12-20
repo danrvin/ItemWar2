@@ -13,11 +13,11 @@ public interface UserService {
 
     User save(User user);
 
-    void setInventoryFalse(User user);
+//    void setInventoryFalse(User user);
+//
+//    void setInventoryTrue(User user);
 
-    void setInventoryTrue(User user);
-
-    void setActive(User user);
+//    void setActive(User user);
 
     void setStartMoney(User user);
 
