@@ -25,7 +25,8 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String profile(Principal principal, Map<String, Object> model) {
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
+        System.out.println(user);
         Inventory inventory = inventoryService.findByAuthor(user);
         Long money = user.getMoney();
         model.put("inventory", inventory);
@@ -36,7 +37,7 @@ public class ProfileController {
 
     @PostMapping("/profile/delete")
     public String delete(Principal principal) {
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         Inventory inventory = inventoryService.findByAuthor(user);
         inventoryService.deleteAuthor(inventory);
         inventoryService.deleteIfNull(inventory);

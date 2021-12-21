@@ -40,6 +40,7 @@ public class User {
     @Column(name = "status")
     private Status status;
 
+
 //    @Column(name = "inventory")
 //    private boolean inventory;
 //

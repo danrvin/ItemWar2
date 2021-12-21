@@ -5,7 +5,6 @@
         Chose item to sell
         <form action="/items" method="post">
             <input type="text" name="id" placeholder="enter item id" required = "required">
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
             <button type="submit">Sell</button>
         </form>
     </div>

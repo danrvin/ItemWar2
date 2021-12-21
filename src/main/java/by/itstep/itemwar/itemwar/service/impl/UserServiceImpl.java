@@ -8,13 +8,9 @@ import by.itstep.itemwar.itemwar.dao.repo.ItemRepo;
 import by.itstep.itemwar.itemwar.dao.repo.UserRepo;
 import by.itstep.itemwar.itemwar.service.UserService;
 import by.itstep.itemwar.itemwar.service.exceptions.NotEnoughMoneyException;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,29 +32,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUserId(Long id) {
+        return userRepo.findById(id).get();
+    }
+
+    @Override
     public User findByUsername(String name) {
         return userRepo.findByUsername(name);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepo.findByEmail(email).get();
     }
 
     @Override
     public User save(User user) {
         return userRepo.save(user);
     }
-
-//    @Override
-//    public void setInventoryFalse(User user) {
-//        user.setInventory(false);
-//    }
-//
-//    @Override
-//    public void setInventoryTrue(User user) {
-//        user.setInventory(true);
-//    }
-
-//    @Override
-//    public void setActive(User user) {
-//        user.setActive(true);
-//    }
 
     @Override
     public void setStartMoney(User user) {

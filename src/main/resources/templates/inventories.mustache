@@ -14,9 +14,8 @@
         <span>Choose inventory</span>
         <div>
             <label>
-                Enter inventory id: <input type="number" name="invnetoryid" required = "required">
-                <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-                <button type="submit">Buy</button>
+                Enter inventory id: <input type="number" name="invnetoryid" required="required" id="txtInventoryId">
+                <button type="submit" id="cmdChoseInventory">Buy</button>
             </label>
         </div>
     </form>
@@ -30,5 +29,21 @@
         <span>{{price}}</span>
     </div>
 {{/inventories}}
+
+<script>
+    cmdChoseInventory.addEventListener("click", function () {
+        addInventoryFromUser("/inventories/buyButton", txtInventoryId.value)
+    })
+
+    function addInventoryFromUser() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", arguments[0], false);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        bodyStr = arguments[1]
+        xhr.send(bodyStr)
+        //document.location.href = "http://localhost:8080/html/" + xhr.responseText
+        document.location.href = "profile.mustache"
+    }
+</script>
 </body>
 </html>

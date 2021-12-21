@@ -3,6 +3,8 @@ package by.itstep.itemwar.itemwar.controller;
 import by.itstep.itemwar.itemwar.dao.model.User;
 import by.itstep.itemwar.itemwar.dao.model.enums.Role;
 import by.itstep.itemwar.itemwar.dao.model.enums.Status;
+import by.itstep.itemwar.itemwar.service.InventoryService;
+import by.itstep.itemwar.itemwar.service.ItemService;
 import by.itstep.itemwar.itemwar.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,14 +14,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
 
     private final UserService userService;
+    private final InventoryService inventoryService;
+    private final ItemService itemService;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, InventoryService inventoryService, ItemService itemService) {
         this.userService = userService;
+        this.inventoryService = inventoryService;
+        this.itemService = itemService;
     }
 
 
@@ -30,7 +38,7 @@ public class AuthController {
 
     @GetMapping("/success")
     public String getSuccessPage() {
-        return "success";
+        return "start";
     }
 
     @GetMapping("/registration")
@@ -40,12 +48,35 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public String userRegistration(@RequestBody User user) {
+    public String userRegistration(@RequestBody User user, Map<String, Object> model) {
+        User userFromDb = userService.findByUsername(user.getUsername());
+        if (userFromDb != null) {
+            model.put("message", "User exist!");
+            return "registration";
+        }
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.setStartMoney(user);
+        inventoryService.createInventories();
         user.setRole(Role.USER);
         user.setStatus(Status.ACTIVE);
+        model.put("money", user.getMoney());
         userService.save(user);
-        return "/rest/user";
+        return "/profile";
     }
+    //@PostMapping("/registration")
+////    public String addUser(User user, Map<String, Object> model) {
+////        User userFromDb = userService.findByUsername(user.getUsername());
+////        if (userFromDb != null) {
+////            model.put("message", "User exist!");
+////            return "registration";
+////        }
+//////        userService.setActive(user);
+////        userService.setStartMoney(user);
+//////        user.setRoles(Collections.singleton(Role.USER));
+////        inventoryService.createInventories();
+////        userService.save(user);
+////        return "redirect:/login";
+////    }
+
 }

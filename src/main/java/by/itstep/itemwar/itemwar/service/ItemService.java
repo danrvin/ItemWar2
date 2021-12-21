@@ -13,5 +13,5 @@ public interface ItemService {
 
     void save(Item item);
 
-    void createItemsFromInventory(Inventory inventory);
+     void createItemsFromInventory(Inventory inventory);
 }

@@ -32,7 +32,7 @@ public class ItemController {
             Map<String, Object> model,
             Principal principal
     ) {
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         Inventory inventory = inventoryService.findByAuthor(user);
         Iterable<Item> items = itemService.findAllByInventory(inventory);
         model.put("items", items);
@@ -45,7 +45,7 @@ public class ItemController {
             Map<String, Object> model,
             Principal principal
     ) {
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         Inventory inventory = inventoryService.findByAuthor(user);
         Item item = itemService.findItemById(id);
         userService.userSetMoneyFromItem(user,id);

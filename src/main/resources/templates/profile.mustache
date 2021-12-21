@@ -8,16 +8,13 @@
 </div>
 <div>
     <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         <input type="submit" value="Sign Out"/>
     </form>
     <form action="/profile/choose" method="post">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         <input type="submit" value="Choose inventory"/>
     </form>
     <form action="/profile/delete" method="post">
         <input type="hidden" name="function" value="delete">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}">
         <input type="submit" value="lay out inventory"/>
     </form>
 </div>

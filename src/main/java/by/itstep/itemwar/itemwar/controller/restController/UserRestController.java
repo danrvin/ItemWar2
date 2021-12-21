@@ -4,7 +4,10 @@ import by.itstep.itemwar.itemwar.dao.model.Item;
 import by.itstep.itemwar.itemwar.dao.model.User;
 import by.itstep.itemwar.itemwar.service.ItemService;
 import by.itstep.itemwar.itemwar.service.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/rest/user")
@@ -19,9 +22,9 @@ public class UserRestController {
     }
 
     @GetMapping(value = "{id}")
-    public Item findById(@PathVariable Long id) {
-        return itemService.findItemById(id);
-
+    @PreAuthorize(value = "hasAuthority('users:read')")
+    public User findById(@PathVariable Long id) {
+        return userService.findByUserId(id);
     }
 
 }

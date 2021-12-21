@@ -8,12 +8,14 @@ import by.itstep.itemwar.itemwar.service.impl.InventoryServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/inventories")
 public class InventoryController {
 
     private final InventoryService inventoryService;
@@ -24,23 +26,23 @@ public class InventoryController {
         this.userService = userService;
     }
 
-    @GetMapping("/inventories")
+    @GetMapping
     public String main(Map<String, Object> model, Principal principal) {
         Iterable<Inventory> inventories = inventoryService.findAll();
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         Long money = user.getMoney();
         model.put("inventories", inventories);
         model.put("money", money);
         return "inventories";
     }
 
-    @PostMapping("/inventories/buyButton")
+    @PostMapping("/buyButton")
     public String buyButton(
             @RequestParam Long invnetoryid,
             Principal principal,
             Map<String, Object> model
     ) {
-        User user = userService.findByUsername(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         Inventory inventory = inventoryService.findInventoryById(invnetoryid);
         inventoryService.setAuthor(inventory, user);
 //        userService.setInventoryTrue(user);
